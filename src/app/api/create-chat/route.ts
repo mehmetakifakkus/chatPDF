@@ -1,5 +1,5 @@
-// import { loadS3IntoPinecone } from "@/lib/pinecone";
 import prisma from '@/lib/prismadb'
+import { loadS3IntoPinecone } from '@/lib/pinecone';
 import { getS3Url } from "@/lib/s3";
 import { auth, clerkClient } from "@clerk/nextjs";
 import { NextResponse } from "next/server";
@@ -17,7 +17,7 @@ export async function POST(req: Request, res: Response) {
     console.log(file_key, file_name);
 
     const user = await clerkClient.users?.getUser((userId as string) || "");
-    // await loadS3IntoPinecone(file_key);
+    await loadS3IntoPinecone(file_key);
 
     await prisma.user.upsert({
       where: {
