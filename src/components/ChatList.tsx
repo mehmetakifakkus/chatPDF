@@ -4,6 +4,7 @@ import React from "react";
 import { Chat } from "@prisma/client";
 import { FaRegFilePdf } from "react-icons/fa6";
 import { useAutoAnimate } from "@formkit/auto-animate/react";
+import Link from "next/link";
 
 type Props = {
   chats: Chat[];
@@ -23,7 +24,9 @@ const ChatList = ({ chats }: Props) => {
           className="flex gap-2 items-center cursor-pointer"
         >
           <FaRegFilePdf size={18} />
-          <span className="text-sm text-neutral-700">{chat.pdfName}</span>
+          <Link href={`/chat/${chat.id}`}>
+            <span className="text-sm text-neutral-700">{chat.pdfName}</span>
+          </Link>
         </div>
       ))}
     </div>
