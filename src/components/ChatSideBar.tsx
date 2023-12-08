@@ -28,10 +28,13 @@ const ChatSideBar = ({ chats, chatId }: Props) => {
         {chats.map((chat) => (
           <Link href={`/chat/${chat.id}`} key={chat.fileKey}>
             <div
-              className={cn("flex rounded-lg p-3 text-slate-300 items-center", {
-                "bg-slate-700 text-white": chatId === chat.id,
-                "hover:text-white": chatId !== chat.id,
-              })}
+              className={cn(
+                "flex rounded-lg py-2 text-slate-300 items-center",
+                {
+                  "bg-slate-700 text-white": chatId === chat.id,
+                  "hover:text-white": chatId !== chat.id,
+                }
+              )}
             >
               <FaRegFilePdf size={18} className="mr-2" />
               <p className="w-full text-sm overflow-hidden whitespace-nowrap truncate text-ellipsis">
