@@ -9,7 +9,7 @@ import "./globals.css";
 const inter = Inter({ subsets: ["latin"], variable: "--font-sans" });
 
 export const metadata: Metadata = {
-  title: "Yemek-GPT app",
+  title: "Chat-GPT app",
   description: "You can chat with a GPT-3 powered chatbot about Turkish food.",
 };
 
