@@ -16,8 +16,8 @@ type Props = {};
 const FileUpload = (props: Props) => {
   const router = useRouter();
   const [uploading, setUploading] = React.useState(false);
-  const isLoading = false;
-  const { mutate } = useMutation({
+  const [isLoading, setIsLoading] = React.useState(false);
+  const { mutate, isPending } = useMutation({
     mutationFn: async ({
       file_key,
       file_name,
@@ -25,10 +25,12 @@ const FileUpload = (props: Props) => {
       file_key: string;
       file_name: string;
     }) => {
+      setIsLoading(true);
       const response = await axios.post("/api/create-chat", {
         file_key,
         file_name,
       });
+      setIsLoading(false);
       return response.data;
     },
   });
@@ -83,7 +85,7 @@ const FileUpload = (props: Props) => {
         })}
       >
         <input {...getInputProps()} />
-        {uploading || isLoading ? (
+        {uploading || isLoading || isPending ? (
           <>
             {/* loading state */}
             <PacmanLoader color="#36d7b7" />
