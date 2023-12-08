@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useEffect } from "react";
 import { Input } from "./ui/input";
 import { useChat } from "ai/react";
 import { RiSendPlane2Line } from "react-icons/ri";
@@ -17,8 +17,18 @@ const ChatComponent = ({ chatId }: Props) => {
     },
   });
 
+  useEffect(() => {
+    const chat = document.getElementById("chat");
+    if (chat) {
+      chat.scrollTo({
+        top: chat.scrollHeight,
+        behavior: "smooth",
+      });
+    }
+  }, [messages]);
+
   return (
-    <div className="relative max-h-screen overflow-scroll">
+    <div id="chat" className="relative max-h-screen overflow-scroll">
       <div className="sticky top-0 inset-x-0 p-3 bg-white h-fit">
         <h3 className="text-xl font-bold">Chat with document</h3>
       </div>
