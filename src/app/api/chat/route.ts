@@ -26,7 +26,11 @@ export async function POST(req: Request) {
     console.log('lastMessage', lastMessage)
 
     const context = await getContext(lastMessage.content, _chat?.fileKey);
-    console.log('context', context)
+    console.log('context', context);
+
+    if (!context || context === '' || context.length < 10) {
+      return NextResponse.json({ error: "context not found" }, { status: 404 });
+    }
 
     const prompt = {
       role: "system",
