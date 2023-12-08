@@ -13,6 +13,7 @@ export default async function Home() {
   const isAuth = !!userId;
 
   const chats = await getChats({ userId: userId as string });
+  const lastChatId = chats[chats.length - 1].id;
 
   return (
     <main className="w-screen min-h-screen bg-[conic-gradient(at_bottom_left,_var(--tw-gradient-stops))] from-fuchsia-300 via-green-400 to-rose-700 p-24">
@@ -25,9 +26,11 @@ export default async function Home() {
 
           {isAuth && (
             <div className="flex my-12">
-              <Button>
-                Go to Chats <FaArrowRight className="ml-2" />
-              </Button>
+              <Link href={`/chat/${lastChatId}`}>
+                <Button>
+                  Go to Chats <FaArrowRight className="ml-2" />
+                </Button>
+              </Link>
             </div>
           )}
 
@@ -48,7 +51,7 @@ export default async function Home() {
               </Link>
             )}
           </div>
-          {isAuth && <ChatList chats={chats} />}
+          {/* {isAuth && <ChatList chats={chats} />} */}
         </div>
       </div>
     </main>
