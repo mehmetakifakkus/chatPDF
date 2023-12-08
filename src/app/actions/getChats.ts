@@ -5,9 +5,7 @@ type Props = {
 }
 
 export default async function getChats(params?: Props) {
-
   let query: any = {}
-
   if (params?.userId)
     query.userId = params.userId;
   else return [];
