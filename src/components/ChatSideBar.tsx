@@ -7,6 +7,7 @@ import { FiPlusCircle } from "react-icons/fi";
 import { FaRegFilePdf } from "react-icons/fa6";
 import { Chat } from "@prisma/client";
 import { cn } from "@/lib/utils";
+import { UserButton } from "@clerk/nextjs";
 
 type Props = {
   chats: Chat[];
@@ -42,9 +43,10 @@ const ChatSideBar = ({ chats, chatId }: Props) => {
       </div>
 
       <div className="absolute bottom-4 left-4">
-        <div className="flex items-center gap-4 text-sm text-slate-400">
+        <div className="flex justify-between items-center gap-20 text-sm text-slate-400">
           <Link href="/">Home</Link>
           <Link href="/sign-out">Sign Out</Link>
+          <UserButton afterSignOutUrl="/" />
         </div>
       </div>
     </div>
