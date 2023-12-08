@@ -1,5 +1,7 @@
 import getChats from "@/app/actions/getChats";
+import ChatComponent from "@/components/ChatComponent";
 import ChatSideBar from "@/components/ChatSideBar";
+import PdfViewer from "@/components/PdfViewer";
 import { auth } from "@clerk/nextjs";
 import { redirect } from "next/navigation";
 import React from "react";
@@ -39,13 +41,13 @@ const ChatPage = async ({ params: { chatId } }: Props) => {
         </div>
 
         {/* pdf viewer */}
-        <div className="max-h-screen overflow-scroll p-4 flex-[5]">
-          {/* <PdfViewer /> */}
+        <div className="max-h-screen overflow-scroll flex-[5]">
+          <PdfViewer pdfUrl={chat.pdfUrl || ""} />
         </div>
 
         {/* chat component */}
         <div className="flex-[3] border-l-4 border-l-slate-400">
-          {/* <ChatComponent /> */}
+          <ChatComponent chatId={chatId} />
         </div>
       </div>
     </div>

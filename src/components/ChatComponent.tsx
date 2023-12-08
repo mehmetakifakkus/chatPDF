@@ -45,4 +45,4 @@ const ChatComponent = ({ chatId }: Props) => {
   );
 };
 
-export default ChatComponents;
+export default ChatComponent;
