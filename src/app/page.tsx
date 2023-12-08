@@ -13,7 +13,7 @@ export default async function Home() {
   const isAuth = !!userId;
 
   const chats = await getChats({ userId: userId as string });
-  const lastChatId = chats[chats.length - 1].id;
+  const lastChatId = chats[chats.length === 0 ? 0 : chats.length - 1].id;
 
   return (
     <main className="w-screen min-h-screen bg-[conic-gradient(at_bottom_left,_var(--tw-gradient-stops))] from-fuchsia-300 via-green-400 to-rose-700 p-24">
