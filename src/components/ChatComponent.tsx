@@ -9,7 +9,7 @@ import MessageList from "./MessageList";
 
 type Props = { chatId: string };
 
-const ChatComponents = ({ chatId }: Props) => {
+const ChatComponent = ({ chatId }: Props) => {
   const { input, handleInputChange, handleSubmit, messages } = useChat({
     api: "/api/chat",
     body: {
