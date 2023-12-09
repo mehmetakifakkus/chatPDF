@@ -30,7 +30,7 @@ const ChatComponent = ({ chatId }: Props) => {
   return (
     <div id="chat" className="relative max-h-screen overflow-scroll">
       <div className="sticky top-0 inset-x-0 p-3 bg-white h-fit">
-        <h3 className="text-xl font-bold">Chat with document</h3>
+        <h3 className="text-xl font-bold">Chat with document selected</h3>
       </div>
 
       <MessageList messages={messages} />
